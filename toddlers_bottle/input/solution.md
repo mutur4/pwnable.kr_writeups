@@ -2,7 +2,7 @@
 
 This was a classic challenge that required some input for the user to be given the flag
 > #### Description: Mom  How can I pass my input to a computer program?
-
+>
 > #### Connection: sshpass -p 'guest' ssh input2@pwnable.kr -p 2222 
 
 Ssh into the server we had the following source code alogether
@@ -99,10 +99,11 @@ if(argc != 100) return 0;
 #include <stdlib.h>
 
 int main(int argc, char **argv){
-  char *args[99+1]= {NULL};
-  for(int i = 0;i < 99;i++){
+  char *args[100]= {NULL};
+  for(int i = 0;i < 100;i++){
     args[i] = "A";
   }
+  args[100] = "\x00";
   args[65] = "\x00"; /* 65 is the same as 'A' in ascii*/
   args[66] = "\x20\x0a\x0d"; /* 66 is the same as 'B' in ascii*/
  
